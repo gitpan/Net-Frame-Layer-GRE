@@ -1,5 +1,8 @@
 Revision history for Perl extension Net::Frame::Layer::GRE.
 
+1.02 Fri Dec 22 14:06:21 CET 2006
+   - bugfix: encapsulated layers naming scheme
+
 1.01 Sun Dec 17 18:01:22 CET 2006
    - UPDATE: all layers moved to Net::Frame::Layer::* namespace
 

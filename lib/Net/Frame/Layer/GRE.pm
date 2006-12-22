@@ -1,11 +1,11 @@
 #
-# $Id: GRE.pm,v 1.5 2006/12/17 17:04:05 gomor Exp $
+# $Id: GRE.pm,v 1.6 2006/12/22 13:05:58 gomor Exp $
 #
 package Net::Frame::Layer::GRE;
 use strict;
 use warnings;
 
-our $VERSION = '1.01';
+our $VERSION = '1.02';
 
 use Net::Frame::Layer qw(:consts);
 require Exporter;
@@ -32,9 +32,9 @@ our %EXPORT_TAGS = (
       NF_GRE_TYPE_WLCCP
       NF_GRE_TYPE_PPPoED
       NF_GRE_TYPE_PPPoES
-      NF_GRE_TYPE_8021x
+      NF_GRE_TYPE_8021X
       NF_GRE_TYPE_AoE
-      NF_GRE_TYPE_80211i
+      NF_GRE_TYPE_80211I
       NF_GRE_TYPE_LLDP
       NF_GRE_TYPE_LOOP
       NF_GRE_TYPE_VLAN
@@ -65,9 +65,9 @@ use constant NF_GRE_TYPE_IPv6      => 0x86dd;
 use constant NF_GRE_TYPE_WLCCP     => 0x872d;
 use constant NF_GRE_TYPE_PPPoED    => 0x8863;
 use constant NF_GRE_TYPE_PPPoES    => 0x8864;
-use constant NF_GRE_TYPE_8021x     => 0x888e;
+use constant NF_GRE_TYPE_8021X     => 0x888e;
 use constant NF_GRE_TYPE_AoE       => 0x88a2;
-use constant NF_GRE_TYPE_80211i    => 0x88c7;
+use constant NF_GRE_TYPE_80211I    => 0x88c7;
 use constant NF_GRE_TYPE_LLDP      => 0x88cc;
 use constant NF_GRE_TYPE_LOOP      => 0x9000;
 use constant NF_GRE_TYPE_VLAN      => 0x9100;
@@ -142,9 +142,9 @@ sub encapsulate {
       NF_GRE_TYPE_WLCCP()   => 'WLCCP',
       NF_GRE_TYPE_PPPoED()  => 'PPPoED',
       NF_GRE_TYPE_PPPoES()  => 'PPPoES',
-      NF_GRE_TYPE_8021x()   => '8021x',
+      NF_GRE_TYPE_8021X()   => '8021X',
       NF_GRE_TYPE_AoE()     => 'AoE',
-      NF_GRE_TYPE_80211i()  => '80211i',
+      NF_GRE_TYPE_80211I()  => '80211I',
       NF_GRE_TYPE_LLDP()    => 'LLDP',
       NF_GRE_TYPE_LOOP()    => 'LOOP',
       NF_GRE_TYPE_VLAN()    => 'VLAN',
@@ -303,11 +303,11 @@ Load them: use Net::Frame::Layer::GRE qw(:consts);
 
 =item B<NF_GRE_TYPE_PPPoES>
 
-=item B<NF_GRE_TYPE_8021x>
+=item B<NF_GRE_TYPE_8021X>
 
 =item B<NF_GRE_TYPE_AoE>
 
-=item B<NF_GRE_TYPE_80211i>
+=item B<NF_GRE_TYPE_80211I>
 
 =item B<NF_GRE_TYPE_LLDP>
 

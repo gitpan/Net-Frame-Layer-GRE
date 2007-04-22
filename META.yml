@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name:                Net-Frame-Layer-GRE
-version:             1.02
+version:             1.03
 abstract:            Generic Route Encapsulation layer object
 license:             Artistic
 generated_by:        ExtUtils::MakeMaker version 6.31

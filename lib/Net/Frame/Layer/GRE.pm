@@ -1,11 +1,11 @@
 #
-# $Id: GRE.pm,v 1.6 2006/12/22 13:05:58 gomor Exp $
+# $Id: GRE.pm,v 1.7 2007/04/22 14:04:34 gomor Exp $
 #
 package Net::Frame::Layer::GRE;
 use strict;
 use warnings;
 
-our $VERSION = '1.02';
+our $VERSION = '1.03';
 
 use Net::Frame::Layer qw(:consts);
 require Exporter;
@@ -36,6 +36,7 @@ our %EXPORT_TAGS = (
       NF_GRE_TYPE_AoE
       NF_GRE_TYPE_80211I
       NF_GRE_TYPE_LLDP
+      NF_GRE_TYPE_LLTD
       NF_GRE_TYPE_LOOP
       NF_GRE_TYPE_VLAN
       NF_GRE_TYPE_PPPPAP
@@ -69,6 +70,7 @@ use constant NF_GRE_TYPE_8021X     => 0x888e;
 use constant NF_GRE_TYPE_AoE       => 0x88a2;
 use constant NF_GRE_TYPE_80211I    => 0x88c7;
 use constant NF_GRE_TYPE_LLDP      => 0x88cc;
+use constant NF_GRE_TYPE_LLTD      => 0x88d9;
 use constant NF_GRE_TYPE_LOOP      => 0x9000;
 use constant NF_GRE_TYPE_VLAN      => 0x9100;
 use constant NF_GRE_TYPE_PPPPAP    => 0xc023;
@@ -146,6 +148,7 @@ sub encapsulate {
       NF_GRE_TYPE_AoE()     => 'AoE',
       NF_GRE_TYPE_80211I()  => '80211I',
       NF_GRE_TYPE_LLDP()    => 'LLDP',
+      NF_GRE_TYPE_LLTD()    => 'LLTD',
       NF_GRE_TYPE_LOOP()    => 'LOOP',
       NF_GRE_TYPE_VLAN()    => 'VLAN',
       NF_GRE_TYPE_PPPPAP()  => 'PPPPAP',
@@ -186,6 +189,7 @@ Net::Frame::Layer::GRE - Generic Route Encapsulation layer object
 
    # Read a raw layer
    my $layer = Net::Frame::Layer::GRE->new(raw => $raw);
+   $layer->unpack;
 
    print $layer->print."\n";
    print 'PAYLOAD: '.unpack('H*', $layer->payload)."\n"
@@ -311,6 +315,8 @@ Load them: use Net::Frame::Layer::GRE qw(:consts);
 
 =item B<NF_GRE_TYPE_LLDP>
 
+=item B<NF_GRE_TYPE_LLTD>
+
 =item B<NF_GRE_TYPE_LOOP>
 
 =item B<NF_GRE_TYPE_VLAN>
@@ -333,7 +339,7 @@ Patrice E<lt>GomoRE<gt> Auffret
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright (c) 2006, Patrice E<lt>GomoRE<gt> Auffret
+Copyright (c) 2006-2007, Patrice E<lt>GomoRE<gt> Auffret
 
 You may distribute this module under the terms of the Artistic license.
 See LICENSE.Artistic file in the source distribution archive.

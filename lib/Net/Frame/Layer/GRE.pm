@@ -1,14 +1,13 @@
 #
-# $Id: GRE.pm,v 1.7 2007/04/22 14:04:34 gomor Exp $
+# $Id: GRE.pm 21 2009-05-31 14:56:35Z gomor $
 #
 package Net::Frame::Layer::GRE;
-use strict;
-use warnings;
+use strict; use warnings;
 
-our $VERSION = '1.03';
+our $VERSION = '1.04';
 
 use Net::Frame::Layer qw(:consts);
-require Exporter;
+use Exporter;
 our @ISA = qw(Net::Frame::Layer Exporter);
 
 our %EXPORT_TAGS = (
@@ -30,6 +29,7 @@ our %EXPORT_TAGS = (
       NF_GRE_TYPE_STP
       NF_GRE_TYPE_IPv6
       NF_GRE_TYPE_WLCCP
+      NF_GRE_TYPE_MPLS
       NF_GRE_TYPE_PPPoED
       NF_GRE_TYPE_PPPoES
       NF_GRE_TYPE_8021X
@@ -64,6 +64,7 @@ use constant NF_GRE_TYPE_IPX       => 0x8137;
 use constant NF_GRE_TYPE_STP       => 0x8181;
 use constant NF_GRE_TYPE_IPv6      => 0x86dd;
 use constant NF_GRE_TYPE_WLCCP     => 0x872d;
+use constant NF_GRE_TYPE_MPLS      => 0x8847;
 use constant NF_GRE_TYPE_PPPoED    => 0x8863;
 use constant NF_GRE_TYPE_PPPoES    => 0x8864;
 use constant NF_GRE_TYPE_8021X     => 0x888e;
@@ -142,6 +143,7 @@ sub encapsulate {
       NF_GRE_TYPE_STP()     => 'STP',
       NF_GRE_TYPE_IPv6()    => 'IPv6',
       NF_GRE_TYPE_WLCCP()   => 'WLCCP',
+      NF_GRE_TYPE_MPLS()    => 'MPLS',
       NF_GRE_TYPE_PPPoED()  => 'PPPoED',
       NF_GRE_TYPE_PPPoES()  => 'PPPoES',
       NF_GRE_TYPE_8021X()   => '8021X',
@@ -303,6 +305,8 @@ Load them: use Net::Frame::Layer::GRE qw(:consts);
 
 =item B<NF_GRE_TYPE_WLCCP>
 
+=item B<NF_GRE_TYPE_MPLS>
+
 =item B<NF_GRE_TYPE_PPPoED>
 
 =item B<NF_GRE_TYPE_PPPoES>
@@ -339,7 +343,7 @@ Patrice E<lt>GomoRE<gt> Auffret
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright (c) 2006-2007, Patrice E<lt>GomoRE<gt> Auffret
+Copyright (c) 2006-2009, Patrice E<lt>GomoRE<gt> Auffret
 
 You may distribute this module under the terms of the Artistic license.
 See LICENSE.Artistic file in the source distribution archive.
